@@ -34,7 +34,7 @@ class PurchaseOrderSerializer(serializers.ModelSerializer):
         fields="__all__"
     
     def create(self,validated_data):
-        items_data=validated_data.pop('po_id_purchase_order_items')
+        items_data=validated_data.pop('po_id_purchase_order_items') 
         purchaseOrder=PurchaseOrder.objects.create(**validated_data)
         for item_data in items_data:
             item_data.update({'domain_user_id':validated_data.get('domain_user_id')})
